@@ -1,0 +1,375 @@
+﻿@model IEnumerable<IngramTimeSheet.Models.TaskDetailsViewModel>
+
+@{
+    var monthYear = Session["monthsYears"].ToString();
+    var numberofDays = DateTime.DaysInMonth(int.Parse(monthYear.Substring(2, 4)), int.Parse(monthYear.Substring(0, 2)));
+}
+<style>
+    .week {
+        font-size: 10px;
+    }
+</style>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered" id="mytable">
+            <tr>
+                <th style="display:none">
+                    @Html.DisplayNameFor(model => model.TaskId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TaskName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day1)
+                    <div class="week">
+                        @DateTime.ParseExact("01" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day2)
+                    <div class="week">
+                        @DateTime.ParseExact("02" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day3)
+                    <div class="week">
+                        @DateTime.ParseExact("03" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day4)
+                    <div class="week">
+                        @DateTime.ParseExact("04" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day5)
+                    <div class="week">
+                        @DateTime.ParseExact("05" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day6)
+                    <div class="week">
+                        @DateTime.ParseExact("06" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day7)
+                    <div class="week">
+                        @DateTime.ParseExact("07" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day8)
+                    <div class="week">
+                        @DateTime.ParseExact("08" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day9)
+                    <div class="week">
+                        @DateTime.ParseExact("09" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day10)
+                    <div class="week">
+                        @DateTime.ParseExact("10" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day11)
+                    <div class="week">
+                        @DateTime.ParseExact("11" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day12)
+                    <div class="week">
+                        @DateTime.ParseExact("12" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day13)
+                    <div class="week">
+                        @DateTime.ParseExact("13" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day14)
+                    <div class="week">
+                        @DateTime.ParseExact("14" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day15)
+                    <div class="week">
+                        @DateTime.ParseExact("15" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day16)
+                    <div class="week">
+                        @DateTime.ParseExact("16" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day17)
+                    <div class="week">
+                        @DateTime.ParseExact("17" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day18)
+                    <div class="week">
+                        @DateTime.ParseExact("18" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day19)
+                    <div class="week">
+                        @DateTime.ParseExact("19" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day20)
+                    <div class="week">
+                        @DateTime.ParseExact("20" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day21)
+                    <div class="week">
+                        @DateTime.ParseExact("21" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day22)
+                    <div class="week">
+                        @DateTime.ParseExact("22" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day23)
+                    <div class="week">
+                        @DateTime.ParseExact("23" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day24)
+                    <div class="week">
+                        @DateTime.ParseExact("24" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day25)
+                    <div class="week">
+                        @DateTime.ParseExact("25" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day26)
+                    <div class="week">
+                        @DateTime.ParseExact("26" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day27)
+                    <div class="week">
+                        @DateTime.ParseExact("27" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Day28)
+                    <div class="week">
+                        @DateTime.ParseExact("28" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                    </div>
+                </th>
+                @if (numberofDays > 28)
+                {
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Day29)
+                        <div class="week">
+                            @DateTime.ParseExact("29" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                        </div>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Day30)
+                        <div class="week">
+                            @DateTime.ParseExact("30" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                        </div>
+                    </th>
+                    if (numberofDays > 30)
+                    {
+                        <th>
+                            @Html.DisplayNameFor(model => model.Day31)
+                            <div class="week">
+                                @DateTime.ParseExact("31" + monthYear, "ddMMyyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dddd").Substring(0, 3)
+                            </div>
+                        </th>
+                    }
+                    else
+                    {
+                        <th style="display:none">
+                            @Html.DisplayNameFor(model => model.Day31)
+                        </th>
+                    }
+                }
+                else
+                {
+                    <th style="display:none">
+                        @Html.DisplayNameFor(model => model.Day29)
+                    </th>
+                    <th style="display:none">
+                        @Html.DisplayNameFor(model => model.Day30)
+                    </th>
+                    <th style="display:none">
+                        @Html.DisplayNameFor(model => model.Day31)
+                    </th>
+                }
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="display:none">
+                        @Html.DisplayFor(modelItem => item.TaskId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskName)
+                    </td>
+                    <td class="1">
+                        @Html.TextBoxFor(modelItem => item.Day1)
+                    </td>
+                    <td class="2">
+                        @Html.TextBoxFor(modelItem => item.Day2)
+                    </td>
+                    <td class="3">
+                        @Html.TextBoxFor(modelItem => item.Day3)
+                    </td>
+                    <td class="4">
+                        @Html.TextBoxFor(modelItem => item.Day4)
+                    </td>
+                    <td class="5">
+                        @Html.TextBoxFor(modelItem => item.Day5)
+                    </td>
+                    <td class="6">
+                        @Html.TextBoxFor(modelItem => item.Day6)
+                    </td>
+                    <td class="7">
+                        @Html.TextBoxFor(modelItem => item.Day7)
+                    </td>
+                    <td class="8">
+                        @Html.TextBoxFor(modelItem => item.Day8)
+                    </td>
+                    <td class="9">
+                        @Html.TextBoxFor(modelItem => item.Day9)
+                    </td>
+                    <td class="10">
+                        @Html.TextBoxFor(modelItem => item.Day10)
+                    </td>
+                    <td class="11">
+                        @Html.TextBoxFor(modelItem => item.Day11)
+                    </td>
+                    <td class="12">
+                        @Html.TextBoxFor(modelItem => item.Day12)
+                    </td>
+                    <td class="13">
+                        @Html.TextBoxFor(modelItem => item.Day13)
+                    </td>
+                    <td class="14">
+                        @Html.TextBoxFor(modelItem => item.Day14)
+                    </td>
+                    <td class="15">
+                        @Html.TextBoxFor(modelItem => item.Day15)
+                    </td>
+                    <td class="16">
+                        @Html.TextBoxFor(modelItem => item.Day16)
+                    </td>
+                    <td class="17">
+                        @Html.TextBoxFor(modelItem => item.Day17)
+                    </td>
+                    <td class="18">
+                        @Html.TextBoxFor(modelItem => item.Day18)
+                    </td>
+                    <td class="19">
+                        @Html.TextBoxFor(modelItem => item.Day19)
+                    </td>
+                    <td class="20">
+                        @Html.TextBoxFor(modelItem => item.Day20)
+                    </td>
+                    <td class="21">
+                        @Html.TextBoxFor(modelItem => item.Day21)
+                    </td>
+                    <td class="22">
+                        @Html.TextBoxFor(modelItem => item.Day22)
+                    </td>
+                    <td class="23">
+                        @Html.TextBoxFor(modelItem => item.Day23)
+                    </td>
+                    <td class="24">
+                        @Html.TextBoxFor(modelItem => item.Day24)
+                    </td>
+                    <td class="25">
+                        @Html.TextBoxFor(modelItem => item.Day25)
+                    </td>
+                    <td class="26">
+                        @Html.TextBoxFor(modelItem => item.Day26)
+                    </td>
+                    <td class="27">
+                        @Html.TextBoxFor(modelItem => item.Day27)
+                    </td>
+                    <td class="28">
+                        @Html.TextBoxFor(modelItem => item.Day28)
+                    </td>
+                    @if (numberofDays > 28)
+                    {
+                        <td class="29">
+                            @Html.TextBoxFor(modelItem => item.Day29)
+                        </td>
+                        <td class="30">
+                            @Html.TextBoxFor(modelItem => item.Day30)
+                        </td>
+                        if (numberofDays > 30)
+                        {
+                            <td class="31">
+                                @Html.TextBoxFor(modelItem => item.Day31)
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="31" style="display:none">
+                                @Html.TextBoxFor(modelItem => item.Day31)
+                            </td>
+                        }
+                    }
+                    else
+                    {
+                        <td class="31" style="display:none">
+                            @Html.TextBoxFor(modelItem => item.Day29)
+                        </td>
+                        <td class="31" style="display:none">
+                            @Html.TextBoxFor(modelItem => item.Day30)
+                        </td>
+                        <td class="31" style="display:none">
+                            @Html.TextBoxFor(modelItem => item.Day31)
+                        </td>
+                    }
+                </tr>
+
+            }
+
+        </table>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-10">
+        </div>
+        <div class="col-2">
+            <input type="button" value="Submit" class="btn btn-primary" id="target" />
+        </div>
+    </div>
+</div>

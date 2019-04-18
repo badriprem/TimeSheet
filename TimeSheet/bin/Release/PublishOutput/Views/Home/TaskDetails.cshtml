@@ -1,0 +1,239 @@
+﻿@model IEnumerable<IngramTimeSheet.Models.TaskDetailsViewModel>
+
+
+
+<style>
+    input {
+        -webkit-box-sizing: border-box;
+        border: 1px solid #C2C2C2;
+        -webkit-box-shadow: 1px 1px 4px #EBEBEB;
+        -webkit-border-radius: 3px;
+        padding: 7px;
+        outline: none;
+        width: 100%;
+    }
+</style>
+
+
+
+
+<div class="table-responsive">
+    <table class="table table-striped panelTable" id="mytable">
+        <tr>
+            <th style="display:none">
+                @Html.DisplayNameFor(model => model.TaskId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day6)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day7)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day8)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day9)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day10)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day11)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day12)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day13)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day14)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day15)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day16)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day17)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day18)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day19)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day20)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day21)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day22)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day23)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day24)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day25)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day26)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day27)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day28)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day29)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day30)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Day31)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="display:none">
+                    @Html.DisplayFor(modelItem => item.TaskId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TaskName)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day1)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day2)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day3)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day4)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day5)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day6)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day7)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day8)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day9)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day10)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day11)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day12)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day13)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day14)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day15)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day16)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day17)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day18)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day19)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day20)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day21)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day22)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day23)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day24)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day25)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day26)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day27)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day28)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day29)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day30)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Day31)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<br />
+<div class="row">
+    <div class="col-lg-10">
+    </div>
+    <div class="col-lg-2">
+        <input type="button" value="Submit" class="btn btn-primary" id="target" />
+    </div>
+</div>

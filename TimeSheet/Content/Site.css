@@ -1,0 +1,152 @@
+﻿/* Panels*/
+
+.timesheet-panel .panel-heading a button.btn-collapse:after {
+    font-family: "FontAwesome";
+    content: "\f068";
+    color: #9FA4AA;
+    border: 1px solid #c8c8c8;
+    padding: 3px 5px;
+    border-radius: 5px;
+    background-color: #F0F0F0;
+    font-size: 17px;
+}
+
+.timesheet-panel.panel-default {
+    border-color: #dcdcdc;
+    border-radius: 0;
+}
+
+.timesheet-panel .panel-heading button.btn-collapse {
+    background-color: #fff;
+    border: none;
+    outline: none;
+}
+
+.timesheet-panel .panel-heading span {
+    color: #000;
+}
+
+.timesheet-panel.panel-default > .panel-heading {
+    color: #000;
+    border-bottom: 1px solid #48b0f7;
+    font-size: 21px;
+    background-color: #fff;
+}
+
+.timesheet-panel .panel-heading a.collapsed button.btn-collapse:after {
+    content: "\f067";
+}
+
+.timesheet-panel.panel.panel-default > .panel-heading span.heading-small {
+    font-size: 12px;
+    color: #505050;
+}
+
+.timesheet-panel .dropdown-spinner button.btn.btn-border {
+    padding: 0 40px 0 10px;
+    background-color: #fff;
+    font-size: 13px;
+    margin: 5px;
+    border: 1px solid #48b0f7;
+    color: #48b0f7;
+    background: #fff;
+    min-width: auto;
+    min-height: 24px;
+}
+
+.timesheet-panel .dropdown-spinner button .fa:first-child {
+    top: 2px;
+}
+
+.timesheet-panel .dropdown-spinner button .fa {
+    position: absolute;
+    right: 8px;
+}
+
+    .timesheet-panel .dropdown-spinner button .fa:last-child {
+        top: 8px;
+    }
+
+.timesheet-panel .dropdown-spinner.dropup-menu.btn-group ul.dropdown-menu {
+    left: -39px;
+    top: 27px;
+}
+
+.timesheet-panel .dropup-menu.btn-group.open > .dropdown-menu {
+    top: 36px;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 0;
+}
+
+.timesheet-panel .dropup-menu.btn-group.open .dropdown-toggle {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom: none;
+    box-shadow: none;
+}
+
+.timesheet-panel.panel.panel-default > .panel-heading span i.fa {
+    margin-right: 10px;
+}
+
+.timesheet-panel .btn-icon > .icon-left {
+    margin-left: 6px;
+}
+
+.timesheet-panel.panel.panel-default > .panel-heading .heading-subtitle span:first-child {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.timesheet-panel.panel.panel-default > .panel-heading .heading-subtitle span:last-child {
+    padding-left: 15px;
+    border-left: 1px solid #333;
+}
+
+.timesheet-panel .panel-body .table {
+    margin-bottom: 0;
+}
+
+.timesheet-panel .panelTable.table th {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+    .table th {
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+/* Table */
+
+.table-striped > tbody > tr > td {
+    border-left: 1px solid #c8c8c8;
+    font-size: 13px;
+    padding-left: 11px;
+}
+
+    .table-striped > tbody > tr > td:first-child {
+        border-left: none;
+    }
+
+.table input {
+    -webkit-box-sizing: border-box;
+    border: 1px solid #C2C2C2;
+    -webkit-box-shadow: 1px 1px 4px #EBEBEB;
+    -webkit-border-radius: 3px;
+    padding: 7px;
+    outline: none;
+    width: 37px;
+    text-align: center;
+}
+
+table td > input {
+    width: 37px;
+    text-align: center;
+}

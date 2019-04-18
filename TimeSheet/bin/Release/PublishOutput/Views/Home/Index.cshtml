@@ -1,0 +1,179 @@
+﻿@model IEnumerable<IngramTimeSheet.Models.User>
+<style>
+    .select-style {
+        border: 1px solid #ccc;
+        width: 150px;
+        border-radius: 3px;
+        overflow: hidden;
+        background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;
+    }
+
+        .select-style select {
+            padding: 0px 8px;
+            width: 130%;
+            border: none;
+            box-shadow: none;
+            background: transparent;
+            background-image: none;
+            -webkit-appearance: none;
+        }
+
+            .select-style select:focus {
+                outline: none;
+            }
+</style>
+<div class="row">
+    <div class="panel panel-default ingram-panel" style="margin:1%">
+        <div class="panel-heading" id="headingOne">
+            <h5>Create TimeSheet</h5>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true">
+            <div class="panel-body">
+                <table class="row">
+                    <tr>
+                        <td class="col-lg-2">Name</td>
+                        <td> </td>
+                        <td>
+                            <div class="select-style form-control">
+                                <select id="user">
+                                    <option value="">Select User</option>
+                                    @foreach (var item in Model)
+                                    {
+                                        <option value="@item.UserId">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </td>
+                        <td> </td>
+                        <td class="col-lg-2">
+                            Period
+                        </td>
+                        <td> </td>
+                        <td>
+                            <input type="text" class="form-control" id="datepicker">
+                        </td>
+                        <td> </td>
+                        <td class="col-lg-2">
+                            <input type="button" name="name" value="Go" class="btn btn-primary" id="Go" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default ingram-panel" style="margin:1%">
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true">
+            <div class="panel-body">
+                <div id="timeSheetDetails">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({
+                dateFormat: 'mmyy',
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+
+
+                onClose: function (dateText, inst) {
+                    var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    $(this).val($.datepicker.formatDate('mmyy', new Date(year, month, 1)));
+                }
+            }).datepicker("setDate", new Date("mmyy"));
+            $("#datepicker").focus(function () {
+                $(".ui-datepicker-calendar").hide();
+                $("#ui-datepicker-div").position({
+                    my: "center top",
+                    at: "center bottom",
+                    of: $(this)
+                });
+            });
+        });
+
+        $("#Go").click(function () {
+            if ($("#user option:selected").val() != '') {
+                $.ajax({
+                    url: '/Home/TaskDetails?userID=' + $("#user option:selected").val() + '&monthYear=' + $("#datepicker").val(),
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html'
+                })
+                    .success(function (result) {
+                        $('#timeSheetDetails').html(result);
+                    });
+            }
+            else {
+                swal("Please Select User Name", "", "warning");
+            }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#timeSheetDetails").on('click', '#target', function () {
+                var InvoiceData = [];
+                var table = document.getElementById('mytable');
+                var tableRowCount = $("#mytable > tbody > tr").length;
+                for (var i = 1; i <= tableRowCount - 1; i++) {
+
+                    var obj = {
+                        TaskId: table.rows.item(i).cells[0].innerText,
+                        TaskName: table.rows.item(i).cells[1].innerText,
+                        Day1: $(table.rows.item(i).cells[2]).find('input').val(),
+                        Day2: $(table.rows.item(i).cells[3]).find('input').val(),
+                        Day3: $(table.rows.item(i).cells[4]).find('input').val(),
+                        Day4: $(table.rows.item(i).cells[5]).find('input').val(),
+                        Day5: $(table.rows.item(i).cells[6]).find('input').val(),
+                        Day6: $(table.rows.item(i).cells[7]).find('input').val(),
+                        Day7: $(table.rows.item(i).cells[8]).find('input').val(),
+                        Day8: $(table.rows.item(i).cells[9]).find('input').val(),
+                        Day9: $(table.rows.item(i).cells[10]).find('input').val(),
+                        Day10: $(table.rows.item(i).cells[11]).find('input').val(),
+                        Day11: $(table.rows.item(i).cells[12]).find('input').val(),
+                        Day12: $(table.rows.item(i).cells[13]).find('input').val(),
+                        Day13: $(table.rows.item(i).cells[14]).find('input').val(),
+                        Day14: $(table.rows.item(i).cells[15]).find('input').val(),
+                        Day15: $(table.rows.item(i).cells[16]).find('input').val(),
+                        Day16: $(table.rows.item(i).cells[17]).find('input').val(),
+                        Day17: $(table.rows.item(i).cells[18]).find('input').val(),
+                        Day18: $(table.rows.item(i).cells[19]).find('input').val(),
+                        Day19: $(table.rows.item(i).cells[20]).find('input').val(),
+                        Day20: $(table.rows.item(i).cells[21]).find('input').val(),
+                        Day21: $(table.rows.item(i).cells[22]).find('input').val(),
+                        Day22: $(table.rows.item(i).cells[23]).find('input').val(),
+                        Day23: $(table.rows.item(i).cells[24]).find('input').val(),
+                        Day24: $(table.rows.item(i).cells[25]).find('input').val(),
+                        Day25: $(table.rows.item(i).cells[26]).find('input').val(),
+                        Day26: $(table.rows.item(i).cells[27]).find('input').val(),
+                        Day27: $(table.rows.item(i).cells[28]).find('input').val(),
+                        Day28: $(table.rows.item(i).cells[29]).find('input').val(),
+                        Day29: $(table.rows.item(i).cells[30]).find('input').val(),
+                        Day30: $(table.rows.item(i).cells[31]).find('input').val(),
+                        Day31: $(table.rows.item(i).cells[32]).find('input').val()
+                    };
+                    InvoiceData.push(obj);
+                }
+                $.ajax({
+                    url: '/Home/SubmitTimeSheet',
+                    type: 'POST',
+                    data: JSON.stringify(InvoiceData),
+                    contentType: 'application/json; charset=utf-8',
+                    async: false
+                })
+                swal("Good job!", "You clicked the button!", "success");
+
+            });
+        })
+    </script>
+}

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <title>Ingram TimeSheet</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header class="main-head">
+        <div style="margin:0 5%">
+            <a href="index.html" class="logo"> <img src="~/images/logo.png" alt=""> </a>
+        </div>
+    </header>
+
+    <div>
+        <div class="panel panel-default ingram-panel" style="margin:2%;">
+            <div class="panel-heading" id="headingOne">
+                <img src="~/images/Timesheet.png" alt="" height="30">
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true">
+                <div class="panel-body">@RenderBody()</div>
+            </div>
+        </div>
+
+
+        <hr />
+        <footer style="margin:0 2%;">
+            <p>&copy; @DateTime.Now.Year - INGRAM BOOK GROUP LLC ALL RIGHTS RESERVED.</p>
+        </footer>
+    </div>
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

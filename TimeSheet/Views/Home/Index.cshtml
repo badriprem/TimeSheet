@@ -1,0 +1,204 @@
+﻿<div class="row">
+    <div class="col-12">
+        <div class="card panel-default timesheet-panel" style="margin:1%">
+            <div class="card-header panel-heading" id="headingOne">
+                <h5>Create TimeSheet</h5>
+            </div>
+            <div class="card-body panel-body">
+
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-1">Name</div>
+                        <input type="hidden" name="name" value="" id="userid" />
+                        <div>
+                            <input type="text" name="name" class="form-control" value="" id="user" />
+                        </div>
+                        <div class="col-1">Period</div>
+                        <div>
+                            <input type="text" class="form-control" id="datepicker">
+                        </div>
+                        <div class="col-1">
+                            <input type="button" name="name" value="Go" class="btn btn-primary" id="Go" />
+                        </div>
+                        <div col="col-1">
+                            <button type="button" class="btn btn-primary" id="Download">
+                                <span class="glyphicon glyphicon-cloud-download"> Download</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="timeSheetDetails">
+
+</div>
+
+
+@section scripts {
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({
+                dateFormat: 'mmyy',
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+
+
+                onClose: function (dateText, inst) {
+                    var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    $(this).val($.datepicker.formatDate('mmyy', new Date(year, month, 1)));
+                }
+            }).datepicker("setDate", new Date("mmyy"));
+            $("#datepicker").focus(function () {
+                $(".ui-datepicker-calendar").hide();
+                $("#ui-datepicker-div").position({
+                    my: "center top",
+                    at: "center bottom",
+                    of: $(this)
+                });
+            });
+        });
+        $("#Download").click(function () {
+            if ($("#userid").val() != '') {
+                $.ajax({
+                    url: '/Home/ExporttoExcel?userID=' + $("#userid").val() + '&monthYear=' + $("#datepicker").val(),
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (result) { }
+                });
+            }
+        });
+
+        $("#Go").click(function () {
+            if ($("#userid").val() != '') {
+                $.ajax({
+                    url: '/Home/TaskDetails?userID=' + $("#userid").val() + '&monthYear=' + $("#datepicker").val(),
+                    contentType: 'application/html; charset=utf-8',
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (result) {
+                        $('#timeSheetDetails').html(result);
+                        var month = $("#datepicker").val().substr(0, 2) - 1;
+                        var year = $("#datepicker").val().substr(2, 4);
+                        var d = new Date(year, month, 01);
+                        var getTot = daysInMonth(d.getMonth(), d.getFullYear());
+                        var sat = new Array();
+                        var sun = new Array();
+                        for (var i = 1; i <= getTot; i++) {
+                            var newDate = new Date(d.getFullYear(), d.getMonth(), i)
+                            if (newDate.getDay() == 0) {
+                                $("." + i).css('background-color', '#c8c8c8');
+                                sat.push(i)
+                            }
+                            if (newDate.getDay() == 6) {
+                                $("." + i).css('background-color', '#c8c8c8');
+                                sun.push(i)
+                            }
+                        }
+
+                        function daysInMonth(month, year) {
+                            return new Date(year, month, 0).getDate();
+                        }
+                    }
+
+                });
+            }
+            else {
+                swal("Please enter user name", "", "warning");
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#user").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/Home/GetUserName/',
+                        data: "{ 'prefix': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#userid").val(i.item.val);
+                },
+                minLength: 1
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#timeSheetDetails").on('click', '#target', function () {
+                var InvoiceData = [];
+                var table = document.getElementById('mytable');
+                var tableRowCount = $("#mytable > tbody > tr").length;
+                for (var i = 1; i <= tableRowCount - 1; i++) {
+
+                    var obj = {
+                        TaskId: table.rows.item(i).cells[0].innerText,
+                        TaskName: table.rows.item(i).cells[1].innerText,
+                        Day1: $(table.rows.item(i).cells[2]).find('input').val(),
+                        Day2: $(table.rows.item(i).cells[3]).find('input').val(),
+                        Day3: $(table.rows.item(i).cells[4]).find('input').val(),
+                        Day4: $(table.rows.item(i).cells[5]).find('input').val(),
+                        Day5: $(table.rows.item(i).cells[6]).find('input').val(),
+                        Day6: $(table.rows.item(i).cells[7]).find('input').val(),
+                        Day7: $(table.rows.item(i).cells[8]).find('input').val(),
+                        Day8: $(table.rows.item(i).cells[9]).find('input').val(),
+                        Day9: $(table.rows.item(i).cells[10]).find('input').val(),
+                        Day10: $(table.rows.item(i).cells[11]).find('input').val(),
+                        Day11: $(table.rows.item(i).cells[12]).find('input').val(),
+                        Day12: $(table.rows.item(i).cells[13]).find('input').val(),
+                        Day13: $(table.rows.item(i).cells[14]).find('input').val(),
+                        Day14: $(table.rows.item(i).cells[15]).find('input').val(),
+                        Day15: $(table.rows.item(i).cells[16]).find('input').val(),
+                        Day16: $(table.rows.item(i).cells[17]).find('input').val(),
+                        Day17: $(table.rows.item(i).cells[18]).find('input').val(),
+                        Day18: $(table.rows.item(i).cells[19]).find('input').val(),
+                        Day19: $(table.rows.item(i).cells[20]).find('input').val(),
+                        Day20: $(table.rows.item(i).cells[21]).find('input').val(),
+                        Day21: $(table.rows.item(i).cells[22]).find('input').val(),
+                        Day22: $(table.rows.item(i).cells[23]).find('input').val(),
+                        Day23: $(table.rows.item(i).cells[24]).find('input').val(),
+                        Day24: $(table.rows.item(i).cells[25]).find('input').val(),
+                        Day25: $(table.rows.item(i).cells[26]).find('input').val(),
+                        Day26: $(table.rows.item(i).cells[27]).find('input').val(),
+                        Day27: $(table.rows.item(i).cells[28]).find('input').val(),
+                        Day28: $(table.rows.item(i).cells[29]).find('input').val(),
+                        Day29: $(table.rows.item(i).cells[30]).find('input').val(),
+                        Day30: $(table.rows.item(i).cells[31]).find('input').val(),
+                        Day31: $(table.rows.item(i).cells[32]).find('input').val()
+                    };
+                    InvoiceData.push(obj);
+                }
+                $.ajax({
+                    url: '/Home/SubmitTimeSheet',
+                    type: 'POST',
+                    data: JSON.stringify(InvoiceData),
+                    contentType: 'application/json; charset=utf-8',
+                    async: false
+                })
+                swal("Good job!", "You clicked the button!", "success");
+
+            });
+        })
+    </script>
+}

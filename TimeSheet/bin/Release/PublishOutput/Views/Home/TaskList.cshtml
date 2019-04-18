@@ -1,0 +1,48 @@
+﻿@model IEnumerable<IngramTimeSheet.Models.Task>
+@{
+    var numberofDays = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+    var textId = string.Empty;
+    var heading = 0;
+}
+
+<div class="table-responsive">
+    <form id="target">
+        <table class="table table-striped panelTable" id="mytable">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TaskId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                @for (int i = 0; i < numberofDays; i++)
+                {
+                    heading = i + 1;
+                    <th>
+                        @heading
+                    </th>
+                }
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.TaskId
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+
+                    @for (int i = 0; i < numberofDays; i++)
+                    {
+                        textId = string.Format("{0}-{1}", item.TaskId, i + 1);
+                        <td>
+                            <input type="text" id="@textId" class="form-control" />
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+        <input type="submit" name="name" value="SUBMIT" />
+    </form>
+</div>
