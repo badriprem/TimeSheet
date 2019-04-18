@@ -1,7 +1,7 @@
 # TimeSheet
 
-Time Tracking
-Employees love our timesheets. You'll love our accurate payroll and billable time calculations. 
+This application is mainly used for calculating time by user
 
-Time Off and PTO
-Our leave management system handles employee requests, supervisor approvals, and accrual calculations.
+Environment  
+Database : sqlite
+Language : C# 4.5 ASP.net MVC 5
