@@ -1,15 +1,37 @@
-# TimeSheet
+# Project Time sheet 
 
 This application is mainly used for calculating time by user
+  - There are user and Admin controls 
+  - Monthly timesheet.
+  - File Datanases
 
-Environment  
-Database : sqlite
-Language : C# 4.5 ASP.net MVC 5
+# Upcomming New Features!
+
+  - Adding login pages. 
+  - Page Restrictions.
+  - Page Restrictions.
+  - New UI
+  - Exporting the timesheet
+
+### Tech
+
+* [asp.net mvc] - HTML enhanced for web apps!
+* [Twitter Bootstrap] - great UI boilerplate for modern web apps
+* [jQuery] - duh
+* [sqlite] - file Database
 
 
-Setup : Please Provide the sqllite database file path in web.config file
+### Installation
+
+Restore all missing dlls.
+
+Setup Database : Please Provide the sqllite database file path in web.config file
 sqlite db file was inside of app_data folder
 
 
+License
+----
 
-#Project is incomplete working on some issues and features.
+MIT
+
+**Free Software**
