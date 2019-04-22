@@ -28,7 +28,7 @@ Restore all missing dlls.
 Setup Database : Please Provide the sqllite database file path in web.config file
 sqlite db file was inside of app_data folder
 
-[![Build Status](https://travis-ci.org/AaronLenoir/flaclibsharp.svg?branch=master)](https://travis-ci.org/AaronLenoir/flaclibsharp)
+[![Build Status](https://travis-ci.org/badriprem/TimeSheet.svg?branch=master)](https://travis-ci.org/badriprem/TimeSheet)
 
 License
 ----
