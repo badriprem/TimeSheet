@@ -1,0 +1,4 @@
+language: csharp
+solution: TimeSheet.sln
+before_script:
+  - nuget restore TimeSheet.sln
